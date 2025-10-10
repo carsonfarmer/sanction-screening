@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "fmt": "prettier --write .",
     "dev": "next dev --turbopack",
     "build": "npm run seed && next build --turbopack",
     "start": "next start",
@@ -20,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "drizzle-kit": "^0.31.5",
+    "prettier": "^3.6.2",
     "tsx": "^4.19.2",
     "typescript": "^5"
   }
