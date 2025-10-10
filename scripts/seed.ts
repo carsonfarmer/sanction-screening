@@ -4,13 +4,11 @@ import { join } from 'path';
 import { db } from "@/db";
 import { addressesTable } from "@/db/schema";
 
-const path = join(process.cwd(), 'data', 'ofac.csv');
+const path = join(process.cwd(), 'data', 'all_sanctioned_addresses.txt');
 const content = readFileSync(path, 'utf-8');
-const lines = content.split('\n').slice(1).filter(line => line.trim());
+const lines = content.split('\n').filter(line => line.trim());
 const addresses = lines.map(line => ({ address: line.trim() }));
-
-
 
 await db.delete(addressesTable);
 await db.insert(addressesTable).values(addresses);
-console.log(`Inserted ${addresses.length} addresses from OFAC list.`);
+console.log(`Inserted ${addresses.length} addresses from all sanctioned addresses list.`);
